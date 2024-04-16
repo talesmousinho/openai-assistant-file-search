@@ -1,6 +1,7 @@
 {
   "tabWidth": 2,
   "useTabs": false,
+  "printWidth": 140,
   "endOfLine": "lf",
   "semi": false,
   "singleQuote": true,
@@ -21,8 +22,5 @@
   "importOrderSeparation": false,
   "importOrderSortSpecifiers": true,
   "importOrderParserPlugins": ["typescript", "jsx", "decorators-legacy"],
-  "plugins": [
-    "prettier-plugin-tailwindcss",
-    "@trivago/prettier-plugin-sort-imports"
-  ]
+  "plugins": ["prettier-plugin-tailwindcss", "@trivago/prettier-plugin-sort-imports"]
 }

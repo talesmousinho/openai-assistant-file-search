@@ -9,8 +9,8 @@
     "lint": "next lint",
     "lint:debug": "next lint --debug",
     "lint:fix": "next lint --fix",
-    "format:write": "prettier . --write --cache",
-    "format:check": "prettier . --check --cache"
+    "format": "prettier . --check --cache",
+    "format:fix": "prettier . --write --cache"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.0.2",

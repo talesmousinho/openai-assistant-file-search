@@ -3,51 +3,19 @@
 import * as React from 'react'
 import { cn } from '@/lib/utils'
 
-function IconNextChat({
-  className,
-  inverted,
-  ...props
-}: React.ComponentProps<'svg'> & { inverted?: boolean }) {
+function IconNextChat({ className, inverted, ...props }: React.ComponentProps<'svg'> & { inverted?: boolean }) {
   const id = React.useId()
 
   return (
-    <svg
-      viewBox="0 0 17 17"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={cn('size-4', className)}
-      {...props}
-    >
+    <svg viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg" className={cn('size-4', className)} {...props}>
       <defs>
-        <linearGradient
-          id={`gradient-${id}-1`}
-          x1="10.6889"
-          y1="10.3556"
-          x2="13.8445"
-          y2="14.2667"
-          gradientUnits="userSpaceOnUse"
-        >
+        <linearGradient id={`gradient-${id}-1`} x1="10.6889" y1="10.3556" x2="13.8445" y2="14.2667" gradientUnits="userSpaceOnUse">
           <stop stopColor={inverted ? 'white' : 'black'} />
-          <stop
-            offset={1}
-            stopColor={inverted ? 'white' : 'black'}
-            stopOpacity={0}
-          />
+          <stop offset={1} stopColor={inverted ? 'white' : 'black'} stopOpacity={0} />
         </linearGradient>
-        <linearGradient
-          id={`gradient-${id}-2`}
-          x1="11.7555"
-          y1="4.8"
-          x2="11.7376"
-          y2="9.50002"
-          gradientUnits="userSpaceOnUse"
-        >
+        <linearGradient id={`gradient-${id}-2`} x1="11.7555" y1="4.8" x2="11.7376" y2="9.50002" gradientUnits="userSpaceOnUse">
           <stop stopColor={inverted ? 'white' : 'black'} />
-          <stop
-            offset={1}
-            stopColor={inverted ? 'white' : 'black'}
-            stopOpacity={0}
-          />
+          <stop offset={1} stopColor={inverted ? 'white' : 'black'} stopOpacity={0} />
         </linearGradient>
       </defs>
       <path
@@ -58,15 +26,7 @@ function IconNextChat({
         strokeLinecap="round"
         strokeLinejoin="round"
       />
-      <mask
-        id="mask0_91_2047"
-        style={{ maskType: 'alpha' }}
-        maskUnits="userSpaceOnUse"
-        x={1}
-        y={0}
-        width={16}
-        height={16}
-      >
+      <mask id="mask0_91_2047" style={{ maskType: 'alpha' }} maskUnits="userSpaceOnUse" x={1} y={0} width={16} height={16}>
         <circle cx={9} cy={8} r={8} fill={inverted ? 'black' : 'white'} />
       </mask>
       <g mask="url(#mask0_91_2047)">
@@ -75,13 +35,7 @@ function IconNextChat({
           d="M14.2896 14.0018L7.146 4.8H5.80005V11.1973H6.87681V6.16743L13.4444 14.6529C13.7407 14.4545 14.0231 14.2369 14.2896 14.0018Z"
           fill={`url(#gradient-${id}-1)`}
         />
-        <rect
-          x="11.2222"
-          y="4.8"
-          width="1.06667"
-          height="6.4"
-          fill={`url(#gradient-${id}-2)`}
-        />
+        <rect x="11.2222" y="4.8" width="1.06667" height="6.4" fill={`url(#gradient-${id}-2)`} />
       </g>
     </svg>
   )
