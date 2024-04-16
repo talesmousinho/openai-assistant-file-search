@@ -6,13 +6,11 @@
     "plugin:tailwindcss/recommended"
   ],
   "plugins": ["tailwindcss"],
-  "rules": {
-    "tailwindcss/no-custom-classname": [
-      "warn",
-      {
-        "whitelist": ["destructive"]
-      }
-    ]
+  "settings": {
+    "tailwindcss": {
+      "callees": ["cn", "cva"],
+      "whitelist": ["destructive"]
+    }
   },
   "overrides": [
     {
