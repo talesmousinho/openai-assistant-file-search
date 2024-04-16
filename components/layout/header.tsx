@@ -5,7 +5,7 @@ import { IconGitHub, IconNextChat, IconSeparator } from '@/components/ui/icons'
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-50 flex h-16 w-full shrink-0 items-center justify-between border-b bg-gradient-to-b from-background/10 via-background/50 to-background/80 px-4 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 flex h-16 w-full shrink-0 items-center justify-between px-4 dark:bg-muted/50">
       <div className="flex items-center">
         <Link href="/" rel="nofollow">
           <IconNextChat className="mr-2 size-6 dark:hidden" inverted />
@@ -21,7 +21,7 @@ export function Header() {
           target="_blank"
           href="https://github.com/talesmousinho/openai-assistant-retrieval"
           rel="noopener noreferrer"
-          className={cn(buttonVariants({ variant: 'outline' }))}
+          className={cn('dark:bg-transparent', buttonVariants({ variant: 'outline' }))}
         >
           <IconGitHub />
           <span className="ml-2 hidden md:flex">GitHub</span>

@@ -1,4 +1,5 @@
 import { ThemeProvider as NextThemesProvider } from 'next-themes'
+import { TooltipProvider } from './ui/tooltip'
 
 export interface ProvidersProps {
   children: React.ReactNode
@@ -7,7 +8,7 @@ export interface ProvidersProps {
 export function Providers({ children }: ProvidersProps) {
   return (
     <NextThemesProvider attribute="class" defaultTheme="system" enableSystem>
-      {children}
+      <TooltipProvider>{children}</TooltipProvider>
     </NextThemesProvider>
   )
 }

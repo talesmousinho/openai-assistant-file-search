@@ -9,7 +9,6 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  metadataBase: new URL(`https://${process.env.VERCEL_URL}`),
   title: {
     default: 'OpenAI Assistant Retrieval',
     template: `%s - OpenAI Assistant Retrieval`,
@@ -33,7 +32,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <Providers>
           <div className="flex min-h-screen flex-col">
             <Header />
-            <main className="flex flex-1 flex-col bg-muted/50">{children}</main>
+            <main className="flex flex-1 flex-col dark:bg-muted/50">{children}</main>
           </div>
         </Providers>
         <Toaster />
