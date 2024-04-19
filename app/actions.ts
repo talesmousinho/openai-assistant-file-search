@@ -5,6 +5,14 @@ import { Message } from '@/types/message'
 
 const openai = new OpenAI()
 
+export async function createVectorStore() {
+  const vectorStore = await openai.beta.vectorStores.create({
+    name: `rag-store-${new Date().toISOString()}`,
+  })
+
+  return vectorStore
+}
+
 export async function createFile(formData: FormData) {
   const fileObj = formData.get('file') as File | null
   if (!fileObj) {
@@ -19,11 +27,20 @@ export async function createFile(formData: FormData) {
   return file
 }
 
-export async function createAssistant(fileIds: string[]) {
+export async function attachFiles(vectorStoreId: string, file_ids: string[]) {
+  const fileBatch = await openai.beta.vectorStores.fileBatches.createAndPoll(vectorStoreId, { file_ids })
+  return fileBatch
+}
+
+export async function createAssistant(vectorStoreId: string) {
   const assistant = await openai.beta.assistants.create({
-    model: 'gpt-4-turbo-preview',
-    tools: [{ type: 'retrieval' }],
-    file_ids: fileIds,
+    model: process.env.OPENAI_MODEL as string,
+    tools: [{ type: 'file_search' }],
+    tool_resources: {
+      file_search: {
+        vector_store_ids: [vectorStoreId],
+      },
+    },
   })
 
   return assistant

@@ -28,7 +28,7 @@ export default function Page({ params }: PageProps) {
     setMessages([...messages, message])
     setIsLoading(true)
     await createMessage(params.threadId, message)
-    const run = await runThread(params.threadId, params.assistantId)
+    await runThread(params.threadId, params.assistantId)
     fetchMessages()
     setIsLoading(false)
   }

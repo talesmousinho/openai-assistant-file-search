@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import { LoaderCircle } from 'lucide-react'
 import { useToast } from '@/lib/hooks/use-toast'
 import Dropzone from '@/components/dropzone'
-import { createAssistant, createFile, createThread } from './actions'
+import { attachFiles, createAssistant, createFile, createThread, createVectorStore } from './actions'
 
 export default function Page() {
   const [isLoading, setIsLoading] = useState(false)
@@ -24,19 +24,21 @@ export default function Page() {
         }),
       )
       const fileIds = fileList.map(file => file.id)
-      const assistant = await createAssistant(fileIds)
+      const vectorStore = await createVectorStore()
+      await attachFiles(vectorStore.id, fileIds)
+
+      const assistant = await createAssistant(vectorStore.id)
       const thread = await createThread()
 
       router.push(`/assistant/${assistant.id}/thread/${thread.id}`)
     } catch (error) {
+      setIsLoading(false)
       toast({
         variant: 'destructive',
         title: 'Uh oh! Something went wrong.',
         description: 'There was a problem creating your assistant.',
       })
     }
-
-    setIsLoading(false)
   }
 
   return (

@@ -1,11 +1,14 @@
-This is a **[Next.js](https://nextjs.org/) 14** project using new features like App Router and Server Actions.  
-It serves as an example of how to use the OpenAI Assistant API with the Retrieval Tool enabled, allowing it to chat with any document supported by OpenAI.  
-**It does not require any provisioned vector database to do Retrieval-augmented generation (RAG), uses only OpenAI SDK to manage and chat with proprietary documents.**
+# Next.js 14 AI Chatbot with OpenAI Assistants API and File Search Tool
+
+This is a **Next.js 14** project using features like _App Router_ and _Server Actions_. It showcases the use of the **OpenAI Assistants API** with the _File Search Tool_ enabled, allowing it to interact with any document type supported by OpenAI.  
+This application does not rely on any provisioned vector database or third-party libraries for Retrieval-augmented generation (RAG). Instead, it exclusively utilizes the OpenAI SDK to manage and interact with proprietary documents.
 
 ## Features
 
 - [Next.js 14](https://nextjs.org) App Router and Server Actions
-- [OpenAI Assistant API](https://platform.openai.com/docs/assistants/overview) with Retrieval Tool to chat with any document supported by OpenAI, see [Supported files](https://platform.openai.com/docs/assistants/tools/file-search/supported-files).
+- [OpenAI Assistants API](https://platform.openai.com/docs/assistants/overview)
+  - With [File Search](https://platform.openai.com/docs/assistants/tools/file-search) tool to chat with any document supported by OpenAI
+  - [Supported files](https://platform.openai.com/docs/assistants/tools/file-search/supported-files)
 - [shadcn/ui](https://ui.shadcn.com)
   - Styling with [Tailwind CSS](https://tailwindcss.com)
   - [Radix UI](https://radix-ui.com) for headless component primitives
@@ -24,10 +27,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to access 
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
-
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [OpenAI Documentation](https://platform.openai.com/docs/assistants/overview) - learn how to use the OpenAI Assistant API.
+- [OpenAI Documentation](https://platform.openai.com/docs/assistants/overview) - learn how to use the OpenAI Assistants API.
 
 ## Not for production
 
