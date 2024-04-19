@@ -1,7 +1,7 @@
-# Next.js 14 AI Chatbot with OpenAI Assistants API and File Search Tool
+# Next.js 14 OpenAI Assistants Chatbot with File Search
 
 This is a **Next.js 14** project using features like _App Router_ and _Server Actions_. It showcases the use of the **OpenAI Assistants API** with the _File Search Tool_ enabled, allowing it to interact with any document type supported by OpenAI.  
-This application does not rely on any provisioned vector database or third-party libraries for Retrieval-augmented generation (RAG). Instead, it exclusively utilizes the OpenAI SDK to manage and interact with proprietary documents.
+**This application does not rely on any provisioned vector database or third-party libraries for Retrieval-augmented generation (RAG). Instead, it exclusively utilizes the OpenAI SDK to manage and interact with proprietary documents.**
 
 ## Features
 
