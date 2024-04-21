@@ -13,7 +13,7 @@ export function Header() {
         </Link>
         <div className="flex items-center">
           <IconSeparator className="size-6 text-muted-foreground/50" />
-          OpenAI Assistant Retrieval
+          OpenAI Assistant File Search
         </div>
       </div>
       <div className="flex items-center justify-end space-x-2">
