@@ -1,8 +1,8 @@
 'use client'
 
 import { useCallback, useEffect, useState } from 'react'
-import { createMessage, listMessages, runThread } from '@/app/actions'
 import { Message } from '@/types/message'
+import { createMessage, listMessages, runThread } from '@/lib/actions'
 import { Chat } from '@/components/chat'
 
 interface PageProps {

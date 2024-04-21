@@ -3,9 +3,9 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { LoaderCircle } from 'lucide-react'
+import { attachFiles, createAssistant, createFile, createThread, createVectorStore } from '@/lib/actions'
 import { useToast } from '@/lib/hooks/use-toast'
 import Dropzone from '@/components/dropzone'
-import { attachFiles, createAssistant, createFile, createThread, createVectorStore } from './actions'
 
 export default function Page() {
   const [isLoading, setIsLoading] = useState(false)
