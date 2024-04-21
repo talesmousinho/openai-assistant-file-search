@@ -1,5 +1,6 @@
 'use server'
 
+import { createStreamableValue } from 'ai/rsc'
 import OpenAI from 'openai'
 import { Message } from '@/types/message'
 
@@ -60,9 +61,10 @@ export async function createMessage(threadId: string, message: Message) {
 export async function listMessages(threadId: string): Promise<Message[]> {
   const response = await openai.beta.threads.messages.list(threadId)
 
-  const messages = response.data.map((message: OpenAI.Beta.Threads.Messages.Message) => {
+  const messages = response.data.map(message => {
+    const { text } = message.content[0] as OpenAI.Beta.Threads.Messages.TextContentBlock
     return {
-      content: (message.content[0] as OpenAI.Beta.Threads.Messages.TextContentBlock).text.value,
+      content: text.value,
       role: message.role,
     } as Message
   })
@@ -72,9 +74,14 @@ export async function listMessages(threadId: string): Promise<Message[]> {
 }
 
 export async function runThread(threadId: string, assistantId: string) {
-  const run = await openai.beta.threads.runs.createAndPoll(threadId, {
-    assistant_id: assistantId,
-  })
+  const stream = createStreamableValue({ text: '' })
 
-  return run
+  openai.beta.threads.runs
+    .stream(threadId, {
+      assistant_id: assistantId,
+    })
+    .on('textDelta', (_, snapshopt) => stream.update({ text: snapshopt.value }))
+    .on('textDone', (content, _) => stream.done({ text: content.value }))
+
+  return stream.value
 }

@@ -1,6 +1,7 @@
 'use client'
 
 import { useCallback, useEffect, useState } from 'react'
+import { readStreamableValue } from 'ai/rsc'
 import { Message } from '@/types/message'
 import { createMessage, listMessages, runThread } from '@/lib/actions'
 import { Chat } from '@/components/chat'
@@ -24,12 +25,23 @@ export default function Page({ params }: PageProps) {
       content: input,
       role: 'user',
     }
+    setMessages(prevMessages => [...prevMessages, message])
 
-    setMessages([...messages, message])
     setIsLoading(true)
     await createMessage(params.threadId, message)
-    await runThread(params.threadId, params.assistantId)
-    fetchMessages()
+    const stream = await runThread(params.threadId, params.assistantId)
+    setMessages(prevMessages => [...prevMessages, { role: 'assistant', content: '' }])
+    for await (const v of readStreamableValue(stream)) {
+      if (v && v.text !== '') {
+        setMessages(prevMessages => [
+          ...prevMessages.slice(0, -1),
+          {
+            content: v.text,
+            role: 'assistant',
+          },
+        ])
+      }
+    }
     setIsLoading(false)
   }
 
