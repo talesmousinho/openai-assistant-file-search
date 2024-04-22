@@ -9,7 +9,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip
 
 export function ChatPrompt({ isLoading, onSubmit }: { isLoading: boolean; onSubmit: (input: string) => void }) {
   const [input, setInput] = useState('')
-  const { formRef, onKeyDown } = useEnterSubmit()
+  const { formRef, onKeyDown } = useEnterSubmit(isLoading)
 
   const handleSubmit = async (e: any) => {
     e.preventDefault()
