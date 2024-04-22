@@ -2,7 +2,7 @@
 
 import { createStreamableValue } from 'ai/rsc'
 import OpenAI from 'openai'
-import { Message } from '@/types/message'
+import { Message } from '@/lib/types'
 
 const openai = new OpenAI()
 

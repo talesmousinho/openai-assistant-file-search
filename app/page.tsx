@@ -16,16 +16,12 @@ export default function Page() {
     setIsLoading(true)
 
     try {
-      const fileList = await Promise.all(
-        Array.from(files).map(file => {
-          const formData = new FormData()
-          formData.append('file', file)
-          return createFile(formData)
-        }),
-      )
-      const fileIds = fileList.map(file => file.id)
+      const fileList = await uploadFiles(files)
       const vectorStore = await createVectorStore()
-      await attachFiles(vectorStore.id, fileIds)
+      await attachFiles(
+        vectorStore.id,
+        fileList.map(file => file.id),
+      )
 
       const assistant = await createAssistant(vectorStore.id)
       const thread = await createThread()
@@ -39,6 +35,16 @@ export default function Page() {
         description: 'There was a problem creating your assistant.',
       })
     }
+  }
+
+  async function uploadFiles(files: FileList) {
+    return await Promise.all(
+      Array.from(files).map(file => {
+        const formData = new FormData()
+        formData.append('file', file)
+        return createFile(formData)
+      }),
+    )
   }
 
   return (

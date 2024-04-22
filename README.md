@@ -9,7 +9,7 @@ This is a **Next.js 14** project using features like _App Router_ and _Server Ac
 - [OpenAI Assistants API](https://platform.openai.com/docs/assistants/overview)
   - With [File Search](https://platform.openai.com/docs/assistants/tools/file-search) tool to chat with any [document supported](https://platform.openai.com/docs/assistants/tools/file-search/supported-files) by OpenAI
 - [Vercel AI SDK](https://sdk.vercel.ai/docs)
-  - With [createStreamableValue](https://sdk.vercel.ai/docs/api-reference/generative-ui/create-streamable-value) and [readStreamableValue](https://github.com/vercel/ai/pull/1114) to stream OpenAI's response
+  - Use [createStreamableValue](https://sdk.vercel.ai/docs/api-reference/generative-ui/create-streamable-value) and [readStreamableValue](https://github.com/vercel/ai/pull/1114) for streaming OpenAI's response
 - [shadcn/ui](https://ui.shadcn.com)
   - Styling with [Tailwind CSS](https://tailwindcss.com)
   - [Radix UI](https://radix-ui.com) for headless component primitives

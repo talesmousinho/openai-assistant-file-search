@@ -1,7 +1,7 @@
-import { Message } from '@/types/message'
+import { Message } from '@/lib/types'
 import { cn } from '@/lib/utils'
 import { IconOpenAI, IconUser } from '@/components/ui/icons'
-import { MemoizedReactMarkdown } from './markdown'
+import { MemoizedReactMarkdown } from '@/components/markdown'
 
 export interface ChatMessageProps {
   message: Message

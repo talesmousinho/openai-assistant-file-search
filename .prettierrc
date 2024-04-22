@@ -13,7 +13,6 @@
     "<THIRD_PARTY_MODULES>",
     "^types$",
     "^@/app/(.*)$",
-    "^@/types/(.*)$",
     "^@/lib/(.*)$",
     "^@/components/ui/(.*)$",
     "^@/components/(.*)$",

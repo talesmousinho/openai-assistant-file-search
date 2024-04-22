@@ -2,8 +2,8 @@
 
 import { useCallback, useEffect, useReducer } from 'react'
 import { readStreamableValue } from 'ai/rsc'
-import { Message } from '@/types/message'
 import { createMessage, listMessages, runThread } from '@/lib/actions'
+import { Message } from '@/lib/types'
 import { Chat } from '@/components/chat'
 
 interface PageProps {
@@ -70,5 +70,9 @@ export default function Page({ params }: PageProps) {
     dispatch({ type: 'SET_LOADING', isLoading: false })
   }
 
-  return <Chat messages={state.messages} handleSubmit={handleSubmit} isLoading={state.isLoading} />
+  return (
+    <div className="relative flex h-[calc(100vh-theme(spacing.16))] overflow-hidden bg-background dark:bg-transparent">
+      <Chat messages={state.messages} handleSubmit={handleSubmit} isLoading={state.isLoading} />
+    </div>
+  )
 }

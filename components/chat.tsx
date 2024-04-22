@@ -1,10 +1,10 @@
 'use client'
 
-import { Message } from '@/types/message'
+import { Message } from '@/lib/types'
 import { cn } from '@/lib/utils'
-import { ChatMessage } from './chat-message'
-import { ChatPrompt } from './chat-prompt'
-import { Separator } from './ui/separator'
+import { Separator } from '@/components/ui/separator'
+import { ChatMessage } from '@/components/chat-message'
+import { ChatPrompt } from '@/components/chat-prompt'
 
 interface ChatProps {
   messages: Message[]
