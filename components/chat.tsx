@@ -13,21 +13,21 @@ interface ChatProps {
   className?: string
 }
 
-export function Chat({ messages, handleSubmit, isLoading, className }: ChatProps) {
+export const Chat: React.FC<ChatProps> = ({ messages, handleSubmit, isLoading, className }) => {
   return (
     <div className="flex w-full flex-col">
       <div className="w-full grow overflow-auto">
         <div className={cn('pt-4 md:pt-10', className)}>
-          {messages.length ? (
+          {messages.length > 0 && (
             <div className="relative mx-auto max-w-3xl px-8">
               {messages.map((message, index) => (
-                <div key={index}>
+                <div key={`msg-${index}`}>
                   <ChatMessage message={message} />
                   {index < messages.length - 1 && <Separator className="my-4 md:my-8" />}
                 </div>
               ))}
             </div>
-          ) : null}
+          )}
         </div>
       </div>
       <div className="inset-x-0 bottom-0 w-full">

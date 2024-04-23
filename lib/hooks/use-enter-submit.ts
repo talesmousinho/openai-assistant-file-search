@@ -1,4 +1,4 @@
-import { type RefObject, useRef } from 'react'
+import { RefObject, useCallback, useRef } from 'react'
 
 export function useEnterSubmit(disabled: boolean): {
   formRef: RefObject<HTMLFormElement>
@@ -6,13 +6,16 @@ export function useEnterSubmit(disabled: boolean): {
 } {
   const formRef = useRef<HTMLFormElement>(null)
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>): void => {
-    if (disabled) return
-    if (event.key === 'Enter' && !event.shiftKey && !event.nativeEvent.isComposing) {
-      formRef.current?.requestSubmit()
-      event.preventDefault()
-    }
-  }
+  const handleKeyDown = useCallback(
+    (event: React.KeyboardEvent<HTMLTextAreaElement>): void => {
+      if (disabled) return
+      if (event.key === 'Enter' && !event.shiftKey && !event.nativeEvent.isComposing) {
+        formRef.current?.requestSubmit()
+        event.preventDefault()
+      }
+    },
+    [disabled],
+  )
 
   return { formRef, onKeyDown: handleKeyDown }
 }

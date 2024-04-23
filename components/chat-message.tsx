@@ -7,16 +7,26 @@ export interface ChatMessageProps {
   message: Message
 }
 
-export function ChatMessage({ message }: ChatMessageProps) {
+export function ChatMessage({ message: { role, content } }: ChatMessageProps) {
+  const getRoleStylesAndIcon = () => {
+    if (role === 'user') {
+      return {
+        iconClassName: 'bg-background',
+        Icon: IconUser,
+      }
+    }
+    return {
+      iconClassName: 'bg-primary text-primary-foreground',
+      Icon: IconOpenAI,
+    }
+  }
+
+  const { iconClassName, Icon } = getRoleStylesAndIcon()
+
   return (
     <div className="relative mb-4 flex items-start">
-      <div
-        className={cn(
-          'flex size-8 shrink-0 select-none items-center justify-center rounded-md border shadow',
-          message.role === 'user' ? 'bg-background' : 'bg-primary text-primary-foreground',
-        )}
-      >
-        {message.role === 'user' ? <IconUser /> : <IconOpenAI />}
+      <div className={cn('flex size-8 shrink-0 select-none items-center justify-center rounded-2xl border', iconClassName)}>
+        <Icon />
       </div>
       <div className="ml-4 flex-1 space-y-2 overflow-hidden px-1">
         <MemoizedReactMarkdown
@@ -27,7 +37,7 @@ export function ChatMessage({ message }: ChatMessageProps) {
             },
           }}
         >
-          {message.content}
+          {content}
         </MemoizedReactMarkdown>
       </div>
     </div>

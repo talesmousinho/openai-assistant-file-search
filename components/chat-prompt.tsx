@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import { CornerDownLeft, LoaderCircle } from 'lucide-react'
 import Textarea from 'react-textarea-autosize'
 import { useEnterSubmit } from '@/lib/hooks/use-enter-submit'
@@ -11,7 +11,11 @@ export function ChatPrompt({ isLoading, onSubmit }: { isLoading: boolean; onSubm
   const [input, setInput] = useState('')
   const { formRef, onKeyDown } = useEnterSubmit(isLoading)
 
-  const handleSubmit = async (e: any) => {
+  const handleInputChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setInput(e.target.value)
+  }, [])
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!input?.trim()) return
 
@@ -34,12 +38,12 @@ export function ChatPrompt({ isLoading, onSubmit }: { isLoading: boolean; onSubm
           name="message"
           rows={1}
           value={input}
-          onChange={e => setInput(e.target.value)}
+          onChange={handleInputChange}
         />
         <div className="absolute right-4 top-3">
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button type="submit" size="icon" className="size-8 rounded-lg" disabled={isLoading || input === ''}>
+              <Button type="submit" size="icon" className="size-8 rounded-lg" disabled={isLoading || input?.trim() === ''}>
                 {isLoading ? <LoaderCircle className="size-6 animate-spin" /> : <CornerDownLeft className="size-4 " />}
                 <span className="sr-only">Send message</span>
               </Button>

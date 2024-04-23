@@ -1,5 +1,5 @@
 import { ThemeProvider as NextThemesProvider } from 'next-themes'
-import { TooltipProvider } from './ui/tooltip'
+import { TooltipProvider } from '@/components/ui/tooltip'
 
 export interface ProvidersProps {
   children: React.ReactNode

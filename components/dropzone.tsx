@@ -15,29 +15,28 @@ export default function Dropzone({ onLoad }: DropzoneProps) {
     const files = e.target.files || e.dataTransfer.files
     onLoad(files)
   }
-
-  function handleDrop(e: any) {
+  function preventDefaultAndStopPropagation(e: React.DragEvent) {
     e.preventDefault()
     e.stopPropagation()
-    setDragActive(false)
-    handleFileLoad(e)
   }
 
-  function handleDragLeave(e: any) {
-    e.preventDefault()
-    e.stopPropagation()
-    setDragActive(false)
-  }
-
-  function handleDragOver(e: any) {
-    e.preventDefault()
-    e.stopPropagation()
+  function handleDragEnter(e: React.DragEvent) {
+    preventDefaultAndStopPropagation(e)
     setDragActive(true)
   }
 
-  function handleDragEnter(e: any) {
-    e.preventDefault()
-    e.stopPropagation()
+  function handleDrop(e: React.DragEvent) {
+    preventDefaultAndStopPropagation(e)
+    setDragActive(false)
+  }
+
+  function handleDragLeave(e: React.DragEvent) {
+    preventDefaultAndStopPropagation(e)
+    setDragActive(false)
+  }
+
+  function handleDragOver(e: React.DragEvent) {
+    preventDefaultAndStopPropagation(e)
     setDragActive(true)
   }
 
@@ -45,11 +44,11 @@ export default function Dropzone({ onLoad }: DropzoneProps) {
     <div className="flex items-center justify-center">
       <label
         htmlFor="fileInput"
-        className={`${
+        className={`mx-auto mt-2 flex w-full max-w-lg cursor-pointer flex-col items-center rounded-xl border-2 p-5 text-center ${
           dragActive
-            ? 'border-2 border-gray-300 bg-gray-200 dark:border-zinc-700 dark:bg-zinc-800'
-            : 'border-2 border-dashed border-gray-300 dark:border-zinc-700'
-        } mx-auto mt-2 flex w-full max-w-lg cursor-pointer flex-col items-center rounded-xl p-5 text-center`}
+            ? 'border-gray-300 bg-gray-200 dark:border-zinc-700 dark:bg-zinc-800'
+            : 'border-dashed border-gray-300 dark:border-zinc-700'
+        }`}
         onDragEnter={handleDragEnter}
         onDrop={handleDrop}
         onDragLeave={handleDragLeave}
