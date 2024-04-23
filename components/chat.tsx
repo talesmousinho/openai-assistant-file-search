@@ -13,7 +13,7 @@ interface ChatProps {
   className?: string
 }
 
-export const Chat: React.FC<ChatProps> = ({ messages, handleSubmit, isLoading, className }) => {
+export function Chat({ messages, handleSubmit, isLoading, className }: ChatProps) {
   return (
     <div className="flex w-full flex-col">
       <div className="w-full grow overflow-auto">
@@ -21,7 +21,7 @@ export const Chat: React.FC<ChatProps> = ({ messages, handleSubmit, isLoading, c
           {messages.length > 0 && (
             <div className="relative mx-auto max-w-3xl px-8">
               {messages.map((message, index) => (
-                <div key={`msg-${index}`}>
+                <div key={`msg-${index}-${message.content.length}`}>
                   <ChatMessage message={message} />
                   {index < messages.length - 1 && <Separator className="my-4 md:my-8" />}
                 </div>

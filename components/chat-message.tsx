@@ -1,3 +1,4 @@
+import { FC, memo } from 'react'
 import { Message } from '@/lib/types'
 import { cn } from '@/lib/utils'
 import { IconOpenAI, IconUser } from '@/components/ui/icons'
@@ -7,7 +8,7 @@ export interface ChatMessageProps {
   message: Message
 }
 
-export function ChatMessage({ message: { role, content } }: ChatMessageProps) {
+export const ChatMessage: FC<ChatMessageProps> = memo(({ message: { role, content } }) => {
   const getRoleStylesAndIcon = () => {
     if (role === 'user') {
       return {
@@ -42,4 +43,6 @@ export function ChatMessage({ message: { role, content } }: ChatMessageProps) {
       </div>
     </div>
   )
-}
+})
+
+ChatMessage.displayName = 'ChatMessage'
