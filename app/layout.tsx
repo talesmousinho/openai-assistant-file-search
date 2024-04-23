@@ -12,10 +12,10 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: {
-    default: 'OpenAI Assistant Retrieval',
-    template: `%s - OpenAI Assistant Retrieval`,
+    default: 'OpenAI Assistant File Search',
+    template: `%s - OpenAI Assistant File Search`,
   },
-  description: 'An OpenAI Assistant Retrieval chatbot built with Next.js.',
+  description: 'An OpenAI Assistant File Search chatbot built with Next.js.',
   icons: {
     icon: '/favicon.ico',
     shortcut: '/favicon-16x16.png',
